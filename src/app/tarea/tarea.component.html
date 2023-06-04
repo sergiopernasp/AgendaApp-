@@ -1,0 +1,8 @@
+<div [ngClass]="estado === 'Pendiente' ? 'tarea pendiente' : 'tarea realizada'" (click)="cambiarEstado()">
+  <h2>{{ titulo }}</h2>
+  <p>Fecha límite: {{ fecha | date: 'yyyy-MM-dd' }}</p>
+  <p>Hora límite: {{ fecha | date: 'HH:mm' }}</p>
+  <p>{{ descripcion }}</p>
+  <p>Estado: {{ estado }}</p>
+  <button (click)="borrarTarea()">Borrar</button>
+</div>

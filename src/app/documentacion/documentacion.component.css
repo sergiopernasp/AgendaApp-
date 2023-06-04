@@ -1,0 +1,37 @@
+/* Estilo para la etiqueta <p> */
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilo para la etiqueta <strong> */
+  strong {
+    font-weight: bold;
+  }
+  
+  /* Estilo para la etiqueta <ul> */
+  ul {
+    list-style-type: disc;
+    margin-left: 20px;
+  }
+  
+  /* Estilo para la etiqueta <li> */
+  li {
+    margin-bottom: 5px;
+  }
+  
+/* Estilos para el contenedor del PDF */
+div {
+    background-color: #f7b366;
+    font-family: Arial, sans-serif;
+    color: #333333;
+  
+    /* Ajuste de tamaño y posición */
+    max-width: 800px; /* Establece un ancho máximo para el contenedor */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    padding: 20px; /* Añade un espacio interno al contenedor */
+  }
+  
+  
+  

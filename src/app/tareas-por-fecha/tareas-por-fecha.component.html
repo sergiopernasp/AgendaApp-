@@ -1,0 +1,15 @@
+<h1>Lista de tareas ordenadas cronológicamente</h1>
+
+<button (click)="alternarMostrarPendientes()">
+  {{ mostrarPendientes ? 'Mostrar todas las tareas' : 'Mostrar solo pendientes' }}
+</button>
+
+<div id="tareas-lista">
+  <ul>
+    <li *ngFor="let tarea of listaTareas" id="tarea">
+      <app-tarea [titulo]="tarea.titulo" [fecha]="tarea.fecha" [descripcion]="tarea.descripcion" [estado]="tarea.estado"
+        (tareaBorrada)="borrarTarea(tarea)" (estadoTareaCambiado)="cambiarEstadoTarea($event, tarea)"
+        *ngIf="!mostrarPendientes || tarea.estado === 'Pendiente'"></app-tarea>
+    </li>
+  </ul>
+</div>

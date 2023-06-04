@@ -1,0 +1,40 @@
+.tarea {
+    background-color: #f5f5f5;
+    padding: 10px;
+    border: 2px solid #000;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    margin: 5px;
+  }
+  
+  .tarea.pendiente {
+    background-color: #edbb83;
+    color: rgb(0, 0, 0);
+  }
+  
+  .tarea.realizada {
+    background-color: #e1995e;
+    color: #333;
+  }
+  
+  .tarea h2 {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+  
+  .tarea p {
+    margin-bottom: 5px;
+  }
+  
+  .tarea button {
+    background-color: #af914c;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }

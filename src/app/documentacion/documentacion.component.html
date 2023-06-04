@@ -1,0 +1,130 @@
+<div>
+    <p>Estructura de componentes:</p>
+
+    <p><strong>AppComponent:</strong> Este componente es el componente principal de la aplicación. Contiene la lógica
+        principal y la estructura de la página principal. A través de la variable componenteActual, se define el
+        componente actual que se muestra en función de la selección del menú. Además, se utiliza la variable
+        listaTareas para almacenar las tareas agregadas.
+    </p>
+
+    <p><strong>Menu:</strong> Este componente representa el menú de navegación de la aplicación. Contiene una lista de
+        elementos li; que representan las diferentes opciones del menú. Al hacer clic en un elemento del menú,
+        se emite un evento componenteSeleccionado con el nombre del componente seleccionado.</p>
+
+    <p><strong>Tarea:</strong> Este componente representa una tarea individual en la lista de tareas. Recibe las
+        propiedades de la tarea (titulo, fecha, descripcion, estado). El componente también emite eventos cuando se hace
+        clic en el botón "Borrar" o cuando se cambia el estado de la tarea.</p>
+
+    <p><strong>AgregarTarea:</strong> Este componente representa el formulario para agregar una nueva tarea. Los datos
+        del formulario (titulo, fecha, hora, descripcion, estado) se vinculan a las variables correspondientes
+        utilizando [(ngModel)]. Cuando se envía el formulario, se emite un evento tareaAgregada con la nueva tarea como
+        argumento.
+    </p>
+
+    <p><strong>TareasPorFecha:</strong> Este componente muestra una lista de tareas ordenadas cronológicamente. Puede
+        alternar entre mostrar todas las tareas y mostrar solo las tareas pendientes. Las tareas se obtienen a través de
+        la variable listaTareas, que se recibe como una propiedad Input.</p>
+
+    <p><strong>TareasPorEstado:</strong> Este componente muestra una lista de tareas separadas por estado (pendientes y
+        realizadas). Al igual que el componente anterior, utiliza la variable listaTareas para obtener las tareas.</p>
+
+    <p>Estructura de código y las invocaciones utilizadas en cada componente de tu aplicación:</p>
+
+    <p><strong>appComponent:</strong></p>
+
+    <ul>
+        <li>Invocaciones:
+            <ul>
+                <li>@Component: Se utiliza para decorar la clase AppComponent y definir las propiedades del componente,
+                    como el selector (selector), la plantilla (templateUrl) y los estilos (styleUrls).</li>
+                <li>componenteActual: string: Esta variable se utiliza para almacenar el nombre del componente actual
+                    que se muestra en función de la selección del menú.</li>
+                <li>listaTareas: Tarea[]: Es un array que almacena las tareas agregadas.</li>
+                <li>app-menu: Invoca al componente menu para mostrar el menú de navegación.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <p><strong>menu:</strong></p>
+
+    <ul>
+        <li>Invocaciones:
+            <ul>
+                <li>componenteSeleccionado: Se utiliza para emitir un evento cuando se selecciona un componente del menú.</li>
+                <li>(click)="seleccionarComponente(componente)": Se utiliza en cada elemento del menú para llamar a la
+                    función seleccionarComponente cuando se hace clic en él y pasar el nombre del componente
+                    seleccionado como argumento.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <p><strong>tarea:</strong></p>
+
+    <ul>
+        <li>Invocaciones:
+            <ul>
+                <li>@Input: Se utiliza para recibir las propiedades de la tarea (titulo, fecha, descripcion, estado)
+                    desde el componente padre.</li>
+                <li>@Output: Se utiliza para emitir eventos cuando se hace clic en el botón "Borrar" o cuando se cambia
+                    el estado de la tarea.</li>
+                <li>(click)="borrarTarea()": Se utiliza para llamar a la función borrarTarea cuando se hace clic en el
+                    botón "Borrar".</li>
+                <li>(change)="cambiarEstado()": Se utiliza para llamar a la función cambiarEstado cuando se cambia el
+                    estado de la tarea.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <p><strong>agregarTarea:</strong></p>
+
+    <ul>
+        <li>Invocaciones:
+            <ul>
+                <li>tareaAgregada: Se utiliza para emitir un evento cuando se agrega una nueva tarea.</li>
+                <li>[(ngModel)]: Se utiliza para vincular los datos del formulario (titulo, fecha, hora, descripcion,
+                    estado) a las variables correspondientes.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <p><strong>tareasPorFecha:</strong></p>
+
+    <ul>
+        <li>Invocaciones:
+            <ul>
+                <li>@Input: Se utiliza para recibir la lista de tareas desde el componente padre.</li>
+                <li>tareasFiltradas: Es un array que almacena las tareas filtradas por fecha.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <p><strong>tareasPorEstado:</strong></p>
+
+    <ul>
+        <li>Invocaciones:
+            <ul>
+                <li>@Input: Se utiliza para recibir la lista de tareas desde el componente padre.</li>
+                <li>tareasFiltradas: Tarea[]: Es un array que almacena las tareas filtradas por estado.</li>
+                <li>[(ngModel)]="estadoSeleccionado": Se utiliza para crear un campo de selección donde se puede
+                    elegir un estado de tarea.</li>
+                <li>(ngModelChange)="filtrarTareasPorEstado()": Se utiliza para llamar a la función
+                    filtrarTareasPorEstado cuando se cambia el estado seleccionado.</li>
+                <li>filtrarTareasPorEstado(): Es una función que filtra las tareas en función del estado seleccionado y
+                    actualiza el array tareasFiltradas con las tareas correspondientes.</li>
+                <li>tareasFiltradas.length: Se utiliza para mostrar el número de tareas filtradas en la plantilla.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <p><strong>Problemas y mejoras</strong></p>
+    <p>
+        Por último añadir que el mayor problema con el que me he enfrentado y que al principio no entendía como hacer ha
+        sido el pasar variables
+        de un componente a otro. Por ejemplo pasar la lista de tareas desde app hasta el listado. Al final me he
+        decantado por recibirlo como un Input
+        dentro del listado. Otro problema relacionado con lo mismo ha sido el modificar el estado de una tarea o
+        eliminarla. Para este problema he usado
+        un eventEmiter para hacerle llegar al padre los cambios necesarios. He intentado añadir la modificación de
+        tareas pero no he sido capaz, ya que
+        cuando modificaba una acababa creando una nueva, asique finalmente lo he eliminado.
+    </p>

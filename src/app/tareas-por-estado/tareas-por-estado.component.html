@@ -1,0 +1,16 @@
+<h1>Lista de tareas pendientes y realizadas</h1>
+<ul>
+  <h1>PENDIENTES</h1>
+  <li *ngFor="let tarea of listaTareas">
+    <app-tarea [titulo]="tarea.titulo" [fecha]="tarea.fecha" [descripcion]="tarea.descripcion" [estado]="tarea.estado"
+      (tareaBorrada)="borrarTarea(tarea)" (estadoTareaCambiado)="cambiarEstadoTarea($event, tarea)"
+      *ngIf="tarea.estado === 'Pendiente'"></app-tarea>
+  </li>
+
+  <h1>REALIZADAS</h1>
+  <li *ngFor="let tarea of listaTareas">
+    <app-tarea [titulo]="tarea.titulo" [fecha]="tarea.fecha" [descripcion]="tarea.descripcion" [estado]="tarea.estado"
+      (tareaBorrada)="borrarTarea(tarea)" (estadoTareaCambiado)="cambiarEstadoTarea($event, tarea)"
+      *ngIf="tarea.estado === 'Realizada'"></app-tarea>
+  </li>
+</ul>
